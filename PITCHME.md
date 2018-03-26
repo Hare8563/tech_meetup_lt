@@ -1,156 +1,146 @@
-# gulpで始めるフロントエンドアセット管理
+# USキーボードの魅力
 
 晴佐久 哲士
 
 ---
 
-フロントエンドのアセット管理ってどうやってますか  
-
-※ アセットとはcss, javascriptはもちろん、画像ファイルやjsonファイルといったviewに絡むもの全般のこと
+突然ですが、お手元を確認してみてください
 
 ---
 
-近年、フロントエンド周りの変化は著しく、それらすべてを効率的に処理するのは難しいです
+当然、プログラマなのであれば
 
 ---
 
-- メタ言語からのコンパイル
-- ES6からES5へのトランスパイル
-- 分割したモジュールの結合
-- スクリプトの圧縮
-- 暗号化
-- テスト
-- Lintを使った静的解析
+![us-keyboard](./image/us.png)
 
 ---
 
-こんなにたくさんのこと毎回やってらんないよ
+ですよねぇ
 
 ---
 
-そこでgulpです
+でも、極稀に
 
 ---
 
-## gulpとはなんだ
-
-- 「タスクランナー」と呼ばれるツール
-- ウェブ制作でやるべきことを「タスク」というかたちで定義しておくことで、アセット管理の一連の作業を自動で行ってくれる
-- ファイルの処理をストリームで行う「ストリーミングビルドシステム」が一番の特徴
-  - イメージとしては、シェルスクリプトのパイプが近い
+![jis-keyboard](./image/jis.png)
 
 ---
 
-``` #!javascript
-// gulpfile.js
-
-const gulp = require("gulp");
-
-gulp.task("copy", () => {                 // "copy"はタスク名
-  return gulp.src("./*.js")               // リソースファイルを指定
-             .pipe(dest("dist/script"));  // 処理結果のファイルをアウトプット
-});
-
-```
+な人もいるので、今日はそんな人向けにUSキーボードの魅力を語っていこうと思います
 
 ---
 
-Gulpなんてこれだけです
+## 魅力1. 意味のあるキー配列
 
 ---
 
-基本この組み合わせです
+JISキーボードのキー配列には突っ込みどころがたくさんあります
 
 ---
 
-おわり
+![jis-keyboard](./image/jis-1.png)
 
 ---
 
-ちょっと味気ないんで、実際にはこんな感じで使っていきます
-
----
-## タスク1 coffeeスクリプトコンパイル
-
-``` #!javascript
-// build.js
-
-const gulp = require("gulp");
-const coffee = require("gulp-coffee");
-
-gulp.task("build", () => {
-    return gulp.src("./*.coffee")
-               .pipe(coffee())
-               .pipe(gulp.dest("dist/"));
-});
-
-```
-
----
-## タスク2 圧縮
-
-```#!javascript
-// minimize.js
-
-const gulp = require("gulp");
-const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
-
-gulp.task("minimize", () => {
-    return gulp.src("./dist/*.js")
-               .pipe(uglifiy())
-               .pipe(rename({
-                 extname: ".min.js"
-                }))
-               .pipe(gulp.dest("dist/"));
-});
-
-```
-
----
-## タスク3 組み合わせ
-
-``` #!javascript
-// gulpfile.js
-const gulp = require("gulp");
-const runSequence = require('run-sequence');
-
-// タスク読み込み
-require("./tasks/build");
-require("./tasks/minimize");
-
-// `npm run gulp`のようにコマンド入力すると実行される
-gulp.task("default", () => {
-  return runSequence("build_coffee", "minimize"); // coffeeビルド -> 圧縮
-});
-
-```
-
----
-## 某FX案件採用例
-
-- webpackと組み合わせて、モジュール解決と適切なファイル配置
-- coffeeスクリプトのビルド
-- ES6 -> ES5へのトランスパイル
-- 文字列の置換
+![jis-keyboard](./image/jis-2.png)
 
 ---
 
-## 今後やりたいこと
-
-- watchでビルド処理の自動化
-- karmaを使ったテスト自動化
+![jis-keyboard](./image/jis-3.png)
 
 ---
 
-今度こそ終わり
+![jis-keyboard](./image/jis-4.png)
 
 ---
 
-## 次回(次々回?)予告
+一方、US配列だと
 
-- webpackで始めるアセットバンドル
-- FLUXってなんですか
-- Reactぶっちゃけ
+---
 
-のどれかします
+![us-keyboard](./image/us-1.png)
+
+---
+
+![us-keyboard](./image/us-2.png)
+
+---
+
+![us-keyboard](./image/us-3.png)
+
+---
+
+といったように配置が合理的です
+
+---
+
+## 魅力2. ホームポジションが意識されたキー配置
+
+---
+
+JISキーボードをお使いの方は、ホームポジションに手を添えてみてください
+
+---
+
+![jis-keyboard](./image/jis-5.png)
+
+---
+
+![us-keyboard](./image/us-4.png)
+
+---
+
+ん？
+
+---
+
+![jis-keyboard](./image/jis-5.png)
+
+---
+
+![us-keyboard](./image/us-4.png)
+
+---
+
+JISキーボードだと、センターがやや左寄りになっています
+
+---
+
+USキーボードだと、センターに合わせてあるため、よく使うreturnキーまで小指が届き、いちいちホームポジションから指を離さないで作業ができます
+
+---
+
+## 魅力3. 合理的なキーサイズ
+
+---
+
+JIS配列の突っ込みどころはまだまだあります
+
+---
+
+![jis-keyboard](./image/jis-6.png)
+
+---
+
+なんで、こんなにキーの大きさバラバラなの・・・
+
+---
+
+Delキーなんてよくつかうじゃん！
+
+---
+
+一方のUSキーボードだと
+
+---
+
+![us-keyboard](./image/us-5.png)
+
+---
+
+必要なキーが必要な大きさになっています
+
+---
+
